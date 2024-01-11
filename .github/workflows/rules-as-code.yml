@@ -1,0 +1,15 @@
+name: Rules As Code build
+on:
+  - workflow_call
+jobs:
+  test:
+    name: Test the docker images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+  deploy:
+    name: Build the docker images
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4

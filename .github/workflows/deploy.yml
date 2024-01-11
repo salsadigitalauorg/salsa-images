@@ -1,0 +1,6 @@
+name: Deploy images
+on:
+  - push
+jobs:
+  delploy:
+    runs-on: ubuntu-latest

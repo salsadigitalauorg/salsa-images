@@ -1,0 +1,6 @@
+name: Test images
+on:
+  - push
+jobs:
+  test:
+    runs-on: ubuntu-latest
