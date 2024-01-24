@@ -1,26 +1,26 @@
-FROM uselagoon/python-3.9:latest as build
+FROM uselagoon/python-3.11:latest
 
-WORKDIR /app/
-
-RUN apk add gcc libc-dev g++ linux-headers yaml-dev
-RUN pip wheel --wheel-dir=/app/wheel numpy==1.20.* numexpr==2.8.* psutil PyYAML
-
-
-FROM uselagoon/python-3.9:latest
+ENV COUNTRY_TEMPLATE_VERSION=6.0.1
+ENV OPENFISCA_CORE_VERSION=41.4.1
+ENV COUNTRY_NAME=rules
 
 EXPOSE 3000
+WORKDIR /app
 
-ARG PROJECT_NAME=rule
-COPY openfisca_$PROJECT_NAME /app/openfisca_$PROJECT_NAME
-COPY README.md setup.cfg setup.py /app/
+# Install OpenFisca-Core dependencies
+RUN apk add build-base linux-headers yaml-dev
 
-WORKDIR /app/
+# Install OpenFisca-Core
+RUN pip install OpenFisca-Core[web-api]==$OPENFISCA_CORE_VERSION
 
-COPY --from=build /app/ /app/
-COPY README.md /app/openfisca_$PROJECT_NAME
-RUN apk add gcc libc-dev g++ linux-headers yaml-dev libffi-dev
-RUN pip install --no-index --find-links=/app/wheel numpy numexpr psutil PyYAML
-RUN pip install -e /app
+# Install country-template
+ADD https://github.com/openfisca/country-template/archive/refs/tags/$COUNTRY_TEMPLATE_VERSION.tar.gz /app
+RUN tar -xzf /app/$COUNTRY_TEMPLATE_VERSION.tar.gz -C /app && \
+    rm /app/$COUNTRY_TEMPLATE_VERSION.tar.gz && \
+    mv /app/country-template-$COUNTRY_TEMPLATE_VERSION /app/country-template
 
+# Copy bootstrap.sh to country-template and run it
+COPY bootstrap.sh /app
+RUN . /app/bootstrap.sh
 
 ENTRYPOINT ["openfisca", "serve", "--bind", "0.0.0.0:3000"]
