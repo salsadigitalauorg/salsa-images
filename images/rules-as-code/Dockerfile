@@ -23,4 +23,4 @@ RUN tar -xzf /app/$COUNTRY_TEMPLATE_VERSION.tar.gz -C /app && \
 COPY bootstrap.sh /app
 RUN . /app/bootstrap.sh
 
-ENTRYPOINT ["openfisca", "serve", "--bind", "0.0.0.0:3000"]
+CMD ["openfisca", "serve", "--bind", "0.0.0.0:3000"]
