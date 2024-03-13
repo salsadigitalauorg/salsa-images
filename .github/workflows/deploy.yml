@@ -6,3 +6,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    steps:
+      - name: Print TODO
+        run: echo "TODO"

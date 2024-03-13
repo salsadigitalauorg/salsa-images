@@ -4,3 +4,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    steps:
+      - name: Print TODO
+        run: echo "TODO"
