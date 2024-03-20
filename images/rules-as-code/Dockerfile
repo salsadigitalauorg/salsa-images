@@ -1,7 +1,7 @@
 FROM uselagoon/python-3.11:latest
 
 ENV COUNTRY_TEMPLATE_VERSION=6.0.1
-ENV OPENFISCA_CORE_VERSION=41.4.2
+ENV OPENFISCA_CORE_VERSION=41.4.3
 ENV COUNTRY_NAME=rules
 # tells the local development environment on which port we are running
 ENV LAGOON_LOCALDEV_HTTP_PORT=8800
