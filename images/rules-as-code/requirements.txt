@@ -1,0 +1,4 @@
+# Additional packages for custom code/simulations (not required for OpenFisca web-api)
+# Using >= with upper bound to allow minor/patch updates, prevent major breaking changes
+pandas>=2.3.3,<3.0.0
+matplotlib>=3.10.7,<4.0.0
