@@ -15,6 +15,10 @@ RUN apk add build-base linux-headers yaml-dev bash git
 # Install OpenFisca-Core
 RUN pip install OpenFisca-Core[web-api]==$OPENFISCA_CORE_VERSION
 
+# Copy requirements file and install additional Python dependencies
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
 # Install country-template
 ADD https://github.com/openfisca/country-template/archive/refs/tags/$COUNTRY_TEMPLATE_VERSION.tar.gz /app
 RUN tar -xzf /app/$COUNTRY_TEMPLATE_VERSION.tar.gz -C /app && \
