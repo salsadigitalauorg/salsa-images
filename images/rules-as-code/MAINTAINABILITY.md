@@ -50,13 +50,13 @@ Currently, version numbers are maintained in multiple locations:
 **Current approach** - Versions defined in Dockerfile ENV:
 ```dockerfile
 ENV COUNTRY_TEMPLATE_VERSION=8.0.1
-ENV OPENFISCA_CORE_VERSION=43.4.3
+ENV OPENFISCA_CORE_VERSION=44.6.0
 ```
 
 **Improved approach** - Use ARG for build-time flexibility:
 ```dockerfile
 # Build arguments (can be overridden at build time)
-ARG OPENFISCA_CORE_VERSION=43.4.3
+ARG OPENFISCA_CORE_VERSION=44.6.0
 ARG COUNTRY_TEMPLATE_VERSION=8.0.1
 
 # Store as ENV for runtime access
@@ -75,7 +75,7 @@ Create a `versions.json` file as the single source of truth:
 
 ```json
 {
-  "openfisca_core": "43.4.3",
+  "openfisca_core": "44.6.0",
   "country_template": "8.0.1",
   "python_base": "3.12",
   "pandas": ">=2.3.3,<3.0.0",
@@ -104,7 +104,7 @@ Rather than hardcoding versions in Markdown files, generate version sections:
 
 **Option B: Dynamic badges in README**
 ```markdown
-![OpenFisca Core](https://img.shields.io/badge/OpenFisca_Core-43.4.3-blue)
+![OpenFisca Core](https://img.shields.io/badge/OpenFisca_Core-44.6.0-blue)
 ```
 
 **Option C: Include file references**
@@ -327,11 +327,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        openfisca_core: ['43.4.3', '43.5.0', 'latest']
+        openfisca_core: ['44.6.0', '43.5.0', 'latest']
         country_template: ['8.0.1', '8.1.0']
         exclude:
           # Exclude known incompatible combinations
-          - openfisca_core: '43.4.3'
+          - openfisca_core: '44.6.0'
             country_template: '8.1.0'
     
     steps:
@@ -464,7 +464,7 @@ RUN apk add --no-cache build-base linux-headers yaml-dev bash git && \
 
 ```dockerfile
 # Add at top of Dockerfile
-ARG OPENFISCA_CORE_VERSION=43.4.3
+ARG OPENFISCA_CORE_VERSION=44.6.0
 ARG COUNTRY_TEMPLATE_VERSION=8.0.1
 
 # Then use in ENV

@@ -109,7 +109,7 @@ The image is pre-configured for Lagoon environments:
 
 ### Core Components
 
-- **OpenFisca Core 43.4.3**: The rules-as-code engine with web API
+- **OpenFisca Core 44.6.0**: The rules-as-code engine with web API
 - **Country Template 8.0.1**: Starter template transformed into `openfisca_rules` package
 - **Additional Libraries**:
   - pandas >=2.3.3,<3.0.0 - For data manipulation and simulations
@@ -122,7 +122,7 @@ The image uses these environment variables:
 | Variable | Value | Purpose |
 |----------|-------|---------|
 | `COUNTRY_TEMPLATE_VERSION` | 8.0.1 | Country template release to use |
-| `OPENFISCA_CORE_VERSION` | 43.4.3 | OpenFisca Core engine version |
+| `OPENFISCA_CORE_VERSION` | 44.6.0 | OpenFisca Core engine version |
 | `JURISDICTION_NAME` | rules | Jurisdiction identifier for package naming |
 | `LAGOON_LOCALDEV_HTTP_PORT` | 8800 | Pygmy local development port indicator |
 
