@@ -57,7 +57,7 @@ docker stop rules-as-code
 
 The image is automatically built and published via GitHub Actions on every push to the repository.
 
-**Workflow**: `.github/workflows/rules-as-code.yml`
+**Workflow**: `.github/workflows/rules-as-code.yml` (uses [actions/checkout@v6](https://github.com/actions/checkout))
 
 The CI/CD pipeline:
 1. **Test Job**: Builds the image and runs OpenFisca tests

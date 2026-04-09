@@ -200,7 +200,7 @@ jobs:
   check-openfisca-core:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Get current version from Dockerfile
         id: current
@@ -266,7 +266,7 @@ jobs:
   check-country-template:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Get current version from Dockerfile
         id: current
@@ -335,7 +335,7 @@ jobs:
             country_template: '8.1.0'
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Build with matrix versions
         run: |
@@ -370,7 +370,7 @@ jobs:
   test-latest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       
       - name: Get latest versions from PyPI
         id: versions

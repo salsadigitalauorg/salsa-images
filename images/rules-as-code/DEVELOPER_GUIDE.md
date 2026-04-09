@@ -207,6 +207,8 @@ The image is automatically built, tested, and published using GitHub Actions whe
 
 **Workflow File**: `.github/workflows/rules-as-code.yml`
 
+The workflow uses [actions/checkout@v6](https://github.com/actions/checkout) to clone the repository on the runner.
+
 ### Pipeline Overview
 
 ```
