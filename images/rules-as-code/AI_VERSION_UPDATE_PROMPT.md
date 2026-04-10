@@ -220,7 +220,7 @@ Follow these steps in order:
 
 ### Step 7: Verify Published Image
 
-1. Identify the image tag that was created. The workflow uses `docker/metadata-action@v5` which creates tags based on:
+1. Identify the image tag that was created. The workflow uses `docker/metadata-action@v6` which creates tags based on:
    - Branch name: The branch name may be sanitised (slashes converted to hyphens)
    - SHA: Short commit SHA
    - For branch `update/openfisca-core-X.X.X`, the tag might be `update-openfisca-core-X.X.X` or similar

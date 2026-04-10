@@ -274,7 +274,7 @@ Push to Repository
 
 ### Automatic Image Tags
 
-The workflow automatically generates tags based on your Git context using [docker/metadata-action@v5](https://github.com/docker/metadata-action):
+The workflow automatically generates tags based on your Git context using [docker/metadata-action@v6](https://github.com/docker/metadata-action):
 
 | Git Action | Ref | Generated Tags | Example |
 |------------|-----|----------------|---------|
