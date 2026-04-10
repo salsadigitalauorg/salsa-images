@@ -274,7 +274,7 @@ Push to Repository
 
 ### Automatic Image Tags
 
-The workflow automatically generates tags based on your Git context using [docker/metadata-action@v5](https://github.com/docker/metadata-action):
+The workflow automatically generates tags based on your Git context using [docker/metadata-action@v6](https://github.com/docker/metadata-action):
 
 | Git Action | Ref | Generated Tags | Example |
 |------------|-----|----------------|---------|
@@ -522,7 +522,9 @@ openfisca_rules package (custom)
 
 ### Automated Version Updates
 
-For automated OpenFisca Core version updates using an AI agent, see [AI_VERSION_UPDATE_PROMPT.md](./AI_VERSION_UPDATE_PROMPT.md). This prompt provides step-by-step instructions for checking for newer versions, updating the Dockerfile, testing locally, monitoring CI/CD, and creating pull requests.
+For **OpenFisca Core** (and Dockerfile pin) updates using an AI agent, see [AI_VERSION_UPDATE_PROMPT.md](./AI_VERSION_UPDATE_PROMPT.md). It covers checking PyPI, updating `OPENFISCA_CORE_VERSION`, local Docker tests, monitoring CI/CD, and opening pull requests.
+
+For **GitHub Actions** pinned in `.github/workflows/rules-as-code.yml` (checkout, Docker build/push, metadata, etc.), see [AI_GITHUB_ACTIONS_UPDATE_PROMPT.md](./AI_GITHUB_ACTIONS_UPDATE_PROMPT.md). It covers checking upstream releases, updating the workflow and related doc strings, validating YAML, local tests, optional `act`, and opening pull requests.
 
 ## Development Workflow
 

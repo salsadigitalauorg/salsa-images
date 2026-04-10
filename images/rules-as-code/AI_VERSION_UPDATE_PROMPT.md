@@ -220,7 +220,7 @@ Follow these steps in order:
 
 ### Step 7: Verify Published Image
 
-1. Identify the image tag that was created. The workflow uses `docker/metadata-action@v5` which creates tags based on:
+1. Identify the image tag that was created. The workflow uses `docker/metadata-action@v6` which creates tags based on:
    - Branch name: The branch name may be sanitised (slashes converted to hyphens)
    - SHA: Short commit SHA
    - For branch `update/openfisca-core-X.X.X`, the tag might be `update-openfisca-core-X.X.X` or similar
@@ -332,4 +332,8 @@ Follow these steps in order:
 - Verify the workflow completed successfully
 - Check the workflow logs for the exact tag name created
 - Use `docker/metadata-action` output to determine the tag
+
+## Related prompts
+
+- **[AI_GITHUB_ACTIONS_UPDATE_PROMPT.md](./AI_GITHUB_ACTIONS_UPDATE_PROMPT.md)** — Bump pinned GitHub Actions in `.github/workflows/rules-as-code.yml`, sync documentation, and validate CI (for example when addressing runner or Node deprecation annotations on actions).
 

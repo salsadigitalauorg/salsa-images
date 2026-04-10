@@ -130,6 +130,8 @@ The image uses these environment variables:
 
 - **[DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md)** - Comprehensive developer guide with architecture explanation, development workflow, and version management
 - **[MAINTAINABILITY.md](./MAINTAINABILITY.md)** - Strategies for automated dependency monitoring, version management, and Docker best practices
+- **[AI_VERSION_UPDATE_PROMPT.md](./AI_VERSION_UPDATE_PROMPT.md)** - AI-oriented steps to bump OpenFisca Core and test the image
+- **[AI_GITHUB_ACTIONS_UPDATE_PROMPT.md](./AI_GITHUB_ACTIONS_UPDATE_PROMPT.md)** - AI-oriented steps to bump GitHub Actions in the Rules As Code workflow and keep docs in sync
 - **[OpenFisca Documentation](https://openfisca.org/doc/)** - Official OpenFisca documentation
 - **[Country Template](https://github.com/openfisca/country-template)** - Upstream template repository
 
