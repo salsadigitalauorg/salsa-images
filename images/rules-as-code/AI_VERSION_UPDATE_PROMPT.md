@@ -333,3 +333,7 @@ Follow these steps in order:
 - Check the workflow logs for the exact tag name created
 - Use `docker/metadata-action` output to determine the tag
 
+## Related prompts
+
+- **[AI_GITHUB_ACTIONS_UPDATE_PROMPT.md](./AI_GITHUB_ACTIONS_UPDATE_PROMPT.md)** — Bump pinned GitHub Actions in `.github/workflows/rules-as-code.yml`, sync documentation, and validate CI (for example when addressing runner or Node deprecation annotations on actions).
+

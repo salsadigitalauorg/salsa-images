@@ -19,6 +19,7 @@ Currently, version numbers are maintained in multiple locations:
 | Location | Versions Referenced | Update Required |
 |----------|---------------------|-----------------|
 | `Dockerfile` (ENV variables) | OpenFisca Core, Country Template | ✅ Primary source |
+| `.github/workflows/rules-as-code.yml` | Pinned `uses: ...@v*` for each GitHub Action | Manual or Dependabot; see [AI_GITHUB_ACTIONS_UPDATE_PROMPT.md](./AI_GITHUB_ACTIONS_UPDATE_PROMPT.md) |
 | `DEVELOPER_GUIDE.md` | All versions (multiple references) | Manual sync required |
 | `README.md` | Core versions in "What's Included" | Manual sync required |
 | `requirements.txt` | pandas, matplotlib | Independent |
