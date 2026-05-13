@@ -1,6 +1,6 @@
 FROM uselagoon/python-3.12:latest
 
-ENV COUNTRY_TEMPLATE_VERSION=8.0.1
+ENV COUNTRY_TEMPLATE_VERSION=8.0.2
 ENV OPENFISCA_CORE_VERSION=44.7.0
 ENV JURISDICTION_NAME=rules
 # This is used for local development with Pygmy

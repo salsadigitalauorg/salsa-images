@@ -50,7 +50,7 @@ Currently, version numbers are maintained in multiple locations:
 
 **Current approach** - Versions defined in Dockerfile ENV:
 ```dockerfile
-ENV COUNTRY_TEMPLATE_VERSION=8.0.1
+ENV COUNTRY_TEMPLATE_VERSION=8.0.2
 ENV OPENFISCA_CORE_VERSION=44.6.0
 ```
 
@@ -58,7 +58,7 @@ ENV OPENFISCA_CORE_VERSION=44.6.0
 ```dockerfile
 # Build arguments (can be overridden at build time)
 ARG OPENFISCA_CORE_VERSION=44.6.0
-ARG COUNTRY_TEMPLATE_VERSION=8.0.1
+ARG COUNTRY_TEMPLATE_VERSION=8.0.2
 
 # Store as ENV for runtime access
 ENV OPENFISCA_CORE_VERSION=${OPENFISCA_CORE_VERSION}
@@ -77,7 +77,7 @@ Create a `versions.json` file as the single source of truth:
 ```json
 {
   "openfisca_core": "44.6.0",
-  "country_template": "8.0.1",
+  "country_template": "8.0.2",
   "python_base": "3.12",
   "pandas": ">=2.3.3,<3.0.0",
   "matplotlib": ">=3.10.7,<4.0.0"
@@ -329,7 +329,7 @@ jobs:
       fail-fast: false
       matrix:
         openfisca_core: ['44.6.0', '43.5.0', 'latest']
-        country_template: ['8.0.1', '8.1.0']
+        country_template: ['8.0.2', '8.1.0']
         exclude:
           # Exclude known incompatible combinations
           - openfisca_core: '44.6.0'
@@ -466,7 +466,7 @@ RUN apk add --no-cache build-base linux-headers yaml-dev bash git && \
 ```dockerfile
 # Add at top of Dockerfile
 ARG OPENFISCA_CORE_VERSION=44.6.0
-ARG COUNTRY_TEMPLATE_VERSION=8.0.1
+ARG COUNTRY_TEMPLATE_VERSION=8.0.2
 
 # Then use in ENV
 ENV OPENFISCA_CORE_VERSION=${OPENFISCA_CORE_VERSION}
