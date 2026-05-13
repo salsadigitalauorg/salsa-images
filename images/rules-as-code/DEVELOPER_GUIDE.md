@@ -125,7 +125,7 @@ CMD start OpenFisca web API server
 The Dockerfile explicitly pins the OpenFisca Core version:
 
 ```dockerfile
-ENV OPENFISCA_CORE_VERSION=44.6.0
+ENV OPENFISCA_CORE_VERSION=44.7.0
 RUN pip install OpenFisca-Core[web-api]==$OPENFISCA_CORE_VERSION
 ```
 
@@ -142,7 +142,7 @@ dependencies = [
 
 1. **Reproducibility**: 
    - Ensures every build produces identical results
-   - `>=43` in template could install 43.0.0, 44.6.0, or a future 45.x depending on when you build
+   - `>=43` in template could install 43.0.0, 44.7.0, or a future 45.x depending on when you build
    - Critical for production environments and debugging
 
 2. **Stability**:
@@ -158,7 +158,7 @@ dependencies = [
 4. **Compatibility Assurance**:
    - We verify that Core version works with our specific Template version
    - Country Template may support a range, but we guarantee a specific pairing
-   - Example: Core 44.6.0 + Template 8.0.1 = tested and validated
+   - Example: Core 44.7.0 + Template 8.0.3 = tested and validated
 
 5. **Deployment Consistency**:
    - All environments (dev, staging, prod) use identical versions
@@ -180,7 +180,7 @@ dependencies = [
 
 **How to Update Safely**:
 1. Check [OpenFisca Core on PyPI](https://pypi.org/project/OpenFisca-Core/) for available versions
-2. Verify compatibility with Country Template version in [pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.1/pyproject.toml) (use the specific tag version)
+2. Verify compatibility with Country Template version in [pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.3/pyproject.toml) (use the specific tag version)
 3. Update `OPENFISCA_CORE_VERSION` in Dockerfile
 4. Build and test thoroughly
 5. Let CI/CD validate the new combination
@@ -189,15 +189,15 @@ dependencies = [
 **Example Compatibility Check**:
 
 ```bash
-# Country Template 8.0.1 requires:
+# Country Template 8.0.3 requires:
 openfisca-core[web-api]>=43
 
 # We can safely use any Core version satisfying >=43 (e.g. 43.x or 44.x)
-# Currently pinned to: 44.6.0
+# Currently pinned to: 44.7.0
 # Future major bumps: re-check Country Template pyproject.toml and run tests
 ```
 
-See the [Country Template pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.1/pyproject.toml) for the specific version's dependency requirements (replace `8.0.1` with your `COUNTRY_TEMPLATE_VERSION`).
+See the [Country Template pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.3/pyproject.toml) for the specific version's dependency requirements (replace `8.0.3` with your `COUNTRY_TEMPLATE_VERSION`).
 
 ## CI/CD Pipeline
 
@@ -293,7 +293,7 @@ vim images/rules-as-code/Dockerfile
 
 # 2. Commit changes
 git add images/rules-as-code/Dockerfile
-git commit -m "Update OpenFisca Core to 44.6.0"
+git commit -m "Update OpenFisca Core to 44.7.0"
 
 # 3. Push to trigger workflow
 git push origin main
@@ -313,7 +313,7 @@ git checkout main
 git pull
 
 # 2. Create and push a tag
-git tag -a 2.1.1 -m "Release version 2.1.1 - OpenFisca Core 44.6.0"
+git tag -a 2.1.1 -m "Release version 2.1.1 - OpenFisca Core 44.7.0"
 git push origin 2.1.1
 
 # 3. Workflow creates image tags automatically
@@ -490,8 +490,8 @@ docker stop test-rules
 The Dockerfile defines these pinned versions:
 
 ```dockerfile
-ENV COUNTRY_TEMPLATE_VERSION=8.0.1      # Country template structure
-ENV OPENFISCA_CORE_VERSION=44.6.0     # OpenFisca engine
+ENV COUNTRY_TEMPLATE_VERSION=8.0.3      # Country template structure
+ENV OPENFISCA_CORE_VERSION=44.7.0     # OpenFisca engine
 ENV JURISDICTION_NAME=rules             # Fixed as "rules" (do not change)
 ENV LAGOON_LOCALDEV_HTTP_PORT=8800     # Pygmy local development port indicator
 ```
@@ -503,9 +503,9 @@ ENV LAGOON_LOCALDEV_HTTP_PORT=8800     # Pygmy local development port indicator
 ```
 Python 3.12 (from base image)
     ↓
-OpenFisca-Core 44.6.0
+OpenFisca-Core 44.7.0
     ↓
-Country Template 8.0.1
+Country Template 8.0.3
     ↓
 openfisca_rules package (custom)
 ```
@@ -515,8 +515,8 @@ openfisca_rules package (custom)
 | Component | Version | Notes |
 |-----------|---------|-------|
 | Python | 3.12 | From uselagoon base image |
-| OpenFisca-Core | 44.6.0 | Includes web-api extras |
-| Country Template | 8.0.1 | Must be compatible with Core version |
+| OpenFisca-Core | 44.7.0 | Includes web-api extras |
+| Country Template | 8.0.3 | Must be compatible with Core version |
 | pandas | >=2.3.3,<3.0.0 | For data simulations |
 | matplotlib | >=3.10.7,<4.0.0 | For visualisations |
 
@@ -651,7 +651,7 @@ docker stop rules-api
 
 2. **Update Dockerfile**:
 ```dockerfile
-ENV OPENFISCA_CORE_VERSION=44.6.0  # New version
+ENV OPENFISCA_CORE_VERSION=44.7.0  # New version
 ```
 
 3. **Test compatibility** with Country Template:
@@ -672,7 +672,7 @@ docker run --rm rules-as-code:test sh -c \
 1. **Check available versions** at [Country Template on PyPI](https://pypi.org/project/openfisca-country-template/)
 
 2. **Check compatibility** with your OpenFisca Core version:
-   - Check the Country Template's [pyproject.toml dependencies](https://github.com/openfisca/country-template/blob/8.0.1/pyproject.toml) (use the specific tag version)
+   - Check the Country Template's [pyproject.toml dependencies](https://github.com/openfisca/country-template/blob/8.0.3/pyproject.toml) (use the specific tag version)
    - Look for `openfisca-core` version requirement (e.g., `openfisca-core[web-api]>=43`)
 
 3. **Update Dockerfile**:
@@ -683,7 +683,7 @@ ENV COUNTRY_TEMPLATE_VERSION=8.1.0  # New version
 4. **Verify first-time-setup.sh compatibility**:
    - Country template updates may change file structure
    - Check if `first-time-setup.sh` script needs adjustments
-   - Compare with [upstream script](https://github.com/openfisca/country-template/blob/8.0.1/first-time-setup.sh) (use the specific tag version)
+   - Compare with [upstream script](https://github.com/openfisca/country-template/blob/8.0.3/first-time-setup.sh) (use the specific tag version)
 
 5. **Test the build**:
 ```bash
