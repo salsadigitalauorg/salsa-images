@@ -303,9 +303,26 @@ Follow these steps in order:
 
 3. Submit the pull request and wait for review/merge.
 
+### Step 9: Git release tag after merge (minor semver)
+
+After the pull request is merged to `main` and CI on `main` is green, publish an immutable image version with a **Git tag**.
+
+1. **Bump the minor version** (`X.Y+1.0`), not patch, whenever **`OPENFISCA_CORE_VERSION` and/or `COUNTRY_TEMPLATE_VERSION`** changed on `main`. Reserve **patch** bumps for fixes that do not change those pins. See [Git release tags (semver)](DEVELOPER_GUIDE.md#git-release-tags-semver) in `DEVELOPER_GUIDE.md`.
+
+2. On an up-to-date `main`, create an **annotated** tag (replace `2.3.0` with the next minor after the latest tag on the repository):
+   ```bash
+   git checkout main
+   git pull origin main
+   git tag -a 2.3.0 -m "Release version 2.3.0 — rules-as-code: OpenFisca Core X.X.X, Country Template Y.Y.Y"
+   git push origin 2.3.0
+   ```
+
+3. Wait for the `rules-as-code` workflow on the tag push to finish; confirm `ghcr.io/.../rules-as-code:2.3.0` (and `latest` if your workflow updates it) in GHCR.
+
 ## Important Notes
 
 - **Do NOT update `COUNTRY_TEMPLATE_VERSION`** unless you've verified compatibility with the new OpenFisca Core version. Check the compatibility matrix in `DEVELOPER_GUIDE.md`.
+- When you cut a **Git release tag** after merging Core and/or Country Template pin updates, use a **minor** semver bump (`X.Y+1.0`), not patch — see `DEVELOPER_GUIDE.md` (Git release tags).
 - **Do NOT change `JURISDICTION_NAME`** - it's fixed as "rules" and required by dependent projects.
 - Always test locally before pushing to ensure the update doesn't break functionality.
 - If tests fail, investigate thoroughly before proceeding. Breaking changes may require additional updates.

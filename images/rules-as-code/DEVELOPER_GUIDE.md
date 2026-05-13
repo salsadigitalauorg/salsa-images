@@ -272,6 +272,18 @@ Push to Repository
 5. **Multi-Platform Build**: Builds for both linux/amd64 and linux/arm64
 6. **Push**: Publishes all tags to the registry
 
+### Git release tags (semver)
+
+Git tags in this repository drive **immutable** `rules-as-code` image versions on GHCR (for example `2.3.0`, `latest`). Follow [semantic versioning](https://semver.org/) when choosing the next tag:
+
+| Bump | When to use |
+|------|-------------|
+| **Major** (`X+1.0.0`) | Breaking changes to the image contract consumers rely on (for example jurisdiction name, exposed ports, entrypoint behaviour, or incompatible base-image / Python changes that require coordinated downstream updates). |
+| **Minor** (`X.Y+1.0`) | **OpenFisca Core** and/or **Country Template** version pins change in `images/rules-as-code/Dockerfile`, or other dependency baseline shifts that materially change the rules engine stack but are not a breaking contract change. **Use a minor bump for routine Core and Country Template updates.** |
+| **Patch** (`X.Y.Z+1`) | Fixes that do **not** change those pins (documentation, CI, scripts, or image fixes with the same Core and Country Template versions). |
+
+After merging to `main`, create an **annotated** tag on the merge commit (or current `main`), then push it so the deploy workflow publishes `rules-as-code:<tag>` and `latest`.
+
 ### Automatic Image Tags
 
 The workflow automatically generates tags based on your Git context using [docker/metadata-action@v6](https://github.com/docker/metadata-action):
@@ -280,7 +292,7 @@ The workflow automatically generates tags based on your Git context using [docke
 |------------|-----|----------------|---------|
 | Push to main | `refs/heads/main` | `main` | `rules-as-code:main` |
 | Push to branch | `refs/heads/develop` | `develop` | `rules-as-code:develop` |
-| Push tag | `refs/tags/2.1.1` | `2.1.1`, `latest` | `rules-as-code:2.1.1`, `rules-as-code:latest` |
+| Push tag | `refs/tags/2.3.0` | `2.3.0`, `latest` | `rules-as-code:2.3.0`, `rules-as-code:latest` |
 | Pull request | `refs/pull/2/merge` | `pr-2` | `rules-as-code:pr-2` |
 
 ### Using the CI/CD Pipeline
@@ -312,12 +324,15 @@ docker pull ghcr.io/salsadigitalauorg/salsa-images/rules-as-code:latest
 git checkout main
 git pull
 
-# 2. Create and push a tag
-git tag -a 2.1.1 -m "Release version 2.1.1 - OpenFisca Core 44.7.0"
-git push origin 2.1.1
+# 2. Choose the next semver tag (see "Git release tags (semver)" above).
+#    Example: after 2.2.0, a Core and/or Country Template pin bump → 2.3.0 (minor), not 2.2.1 (patch).
 
-# 3. Workflow creates image tags automatically
-# Available tags: 2.1.1, latest
+# 3. Create and push an annotated tag on main
+git tag -a 2.3.0 -m "Release version 2.3.0 — rules-as-code: OpenFisca Core 44.7.0, Country Template 8.0.3"
+git push origin 2.3.0
+
+# 4. Workflow creates image tags automatically
+# Available tags: 2.3.0, latest
 ```
 
 #### Development Branch Testing

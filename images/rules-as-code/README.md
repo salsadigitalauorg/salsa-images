@@ -67,8 +67,10 @@ The CI/CD pipeline:
 
 **Image Tags**: Automatically generated based on:
 - Branch name (e.g., `main`, `develop`)
-- Git tags (e.g., `2.1.1` creates tags `2.1.1` and `latest`)
+- Git tags (e.g., `2.3.0` creates tags `2.3.0` and `latest`)
 - Pull requests (e.g., `pr-2`)
+
+For **semver when tagging releases** (including **minor** bumps for OpenFisca Core and/or Country Template pin changes), see [DEVELOPER_GUIDE.md — Git release tags](DEVELOPER_GUIDE.md#git-release-tags-semver).
 
 To deploy:
 ```bash
@@ -77,9 +79,9 @@ git add .
 git commit -m "Update OpenFisca version"
 git push
 
-# Or create a release tag
-git tag 2.1.1
-git push origin 2.1.1
+# Or create a release tag (prefer annotated tags; pick next semver per DEVELOPER_GUIDE.md)
+git tag -a 2.3.0 -m "Release version 2.3.0 — rules-as-code"
+git push origin 2.3.0
 ```
 
 ### Manual Build & Push (Debugging Only)
