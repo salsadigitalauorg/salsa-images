@@ -37,7 +37,7 @@ Follow these steps in order:
 
 4. **If a newer version exists**, verify compatibility:
    - Check the current `COUNTRY_TEMPLATE_VERSION` in `images/rules-as-code/Dockerfile` (line 3)
-   - Verify the new OpenFisca Core version is compatible with the Country Template version by checking the [Country Template's pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.2/pyproject.toml) (replace `8.0.2` with the current `COUNTRY_TEMPLATE_VERSION`)
+   - Verify the new OpenFisca Core version is compatible with the Country Template version by checking the [Country Template's pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.3/pyproject.toml) (replace `8.0.3` with the current `COUNTRY_TEMPLATE_VERSION`)
    - Look for `openfisca-core[web-api]>=X` requirement to ensure compatibility
    - Review the [OpenFisca Core changelog](https://github.com/openfisca/openfisca-core/blob/master/CHANGELOG.md) for breaking changes
 
@@ -316,7 +316,7 @@ Follow these steps in order:
 
 **Tests fail after version update:**
 - Check [OpenFisca Core changelog](https://github.com/openfisca/openfisca-core/blob/master/CHANGELOG.md) for breaking changes
-- Verify Country Template compatibility by checking the [Country Template's pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.2/pyproject.toml) (replace version with current `COUNTRY_TEMPLATE_VERSION`)
+- Verify Country Template compatibility by checking the [Country Template's pyproject.toml](https://github.com/openfisca/country-template/blob/8.0.3/pyproject.toml) (replace version with current `COUNTRY_TEMPLATE_VERSION`)
 - Review test output for specific error messages
 - Consider if dependencies in `requirements.txt` need updating
 - Check if `COUNTRY_TEMPLATE_VERSION` needs updating for compatibility
